@@ -1,0 +1,7 @@
+services:
+  docs-builder:
+    build: .
+    working_dir: /data
+    volumes:
+      - ./:/data
+    entrypoint: ["/bin/sh", "/data/entrypoint.sh"]
