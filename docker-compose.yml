@@ -1,6 +1,7 @@
 services:
   docs-builder:
     build: .
+    user: "${UID}:${GID}"
     working_dir: /data
     volumes:
       - ./:/data
