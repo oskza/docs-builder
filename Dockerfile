@@ -1,4 +1,6 @@
-FROM pandoc/latex:latest
+ARG IMG_VERSION=latest
+
+FROM pandoc/latex:${IMG_VERSION}
 
 RUN apk add --no-cache ttf-dejavu fontconfig && \
     tlmgr update --self && tlmgr install babel-greek && \

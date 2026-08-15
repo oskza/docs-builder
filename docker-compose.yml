@@ -1,8 +1,17 @@
 services:
   docs-builder:
-    build: .
-    user: "${UID}:${GID}"
+    build:
+      context: .
+      args:
+        IMG_VERSION: ${VERSION:-latest}
+    image: docs-builder:${VERSION:-latest}
+    container_name: docs-builder
+    user: "${UID:-1000}:${GID:-1000}"
     working_dir: /data
     volumes:
       - ./:/data
     entrypoint: ["/bin/sh", "/data/entrypoint.sh"]
+
+networks:
+  default:
+    name: docs-builder_net
